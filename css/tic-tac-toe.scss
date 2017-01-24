@@ -1,0 +1,88 @@
+/*----------------------------*\
+  1. MAIN SETUP
+\*----------------------------*/
+
+$primary-color: #314359;
+$secondary-color1: #886A46;
+$secondary-color2: #885E46;
+$border-color: #67788D;
+
+
+body {
+  background: $primary-color;
+  height: 100vh;
+}
+
+
+
+
+/*----------------------------*\
+  2. BOARD
+\*----------------------------*/
+.game {
+  margin: 10% auto;
+  height: 450px;
+  width: 450px;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+
+.square {
+  display: inline-block;
+  height: 33%;
+  width: 32%;
+  margin: 0;
+}
+
+  .top-left {
+    border-bottom: 2px solid $border-color;
+    border-right: 2px solid $border-color;
+  }
+
+  .top-center {
+    border-bottom: 2px solid $border-color;
+    border-left: 2px solid $border-color;
+    border-right: 2px solid $border-color;
+  }
+
+  .top-right {
+    border-bottom: 2px solid $border-color;
+    border-left: 2px solid $border-color;
+  }
+
+  .mid-left {
+    border-bottom: 2px solid $border-color;
+    border-right: 2px solid $border-color;
+    border-top: 2px solid $border-color;
+  }
+
+  .mid-center {
+    border: 2px solid $border-color;
+  }
+
+  .mid-right {
+    border-top: 2px solid $border-color;
+    border-left: 2px solid $border-color;
+    border-bottom: 2px solid $border-color;
+  }
+
+  .bottom-left {
+    border-top: 2px solid $border-color;
+    border-right: 2px solid $border-color;
+  }
+
+  .bottom-center {
+    border-top: 2px solid $border-color;
+    border-left: 2px solid $border-color;
+    border-right: 2px solid $border-color;
+  }
+
+  .bottom-right {
+    border-top: 2px solid $border-color;
+    border-left: 2px solid $border-color;
+  }
