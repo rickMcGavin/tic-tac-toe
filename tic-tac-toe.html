@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="css/tic-tac-toe.min.css">
   </head>
   <body>
+
+    <!-- Game Type Modal -->
+    <div class="wrapper">
+      <div id="onePlayer-twoPlayer">
+        <h1>How do you want to play?</h1>
+        <button type="button" name="onePlayer">One Player</button>
+        <button type="button" name="twoPlayer">Two Player</button>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div id="choose-piece">
+        <h1>Would you like to be X or O?</h1>
+        <button type="button" name="x">X</button>
+        <button type="button" name="o">O</button>
+      </div>
+    </div>
+
+
     <div class="game">
       <div class="board">
         <div class="square top-left"></div>
@@ -20,5 +39,8 @@
         <div class="square bottom-right"></div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/tic-tac-toe.js"></script>
   </body>
 </html>

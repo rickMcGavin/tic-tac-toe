@@ -29,19 +29,49 @@ $border-color: #67788D;
 
 body {
   background: $primary-color;
-  height: 100vh;
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}
+
+
+
+
+
+/*----------------------------*\
+  3. PLAYER CHOICE MODAL
+\*----------------------------*/
+
+#onePlayer-twoPlayer,
+#choose-piece {
+  background-color: rgba(255,255,255, 0.3);
+  display: none;
+  padding: 25% 0;
+  position: fixed;
+  text-align: center;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+#onePlayer-twoPlayer h1,
+#choose-piece h1 {
+
 }
 
 
 
 
 /*----------------------------*\
-  2. BOARD
+  4. BOARD
 \*----------------------------*/
 .game {
-  margin: 10% auto;
+  margin: 0 auto;
   height: 450px;
   width: 450px;
+  padding-top: 10%;
 }
 
 .board {
@@ -105,3 +135,22 @@ body {
     border-top: 2px solid $border-color;
     border-left: 2px solid $border-color;
   }
+
+
+
+
+
+/*----------------------------*\
+  5. PIECES
+\*----------------------------*/
+
+.piece-holder {
+
+}
+.x,
+.o {
+  font-size: 4em;
+  text-align: center;
+  margin-top: 25%;
+  vertical-align: middle;
+}
