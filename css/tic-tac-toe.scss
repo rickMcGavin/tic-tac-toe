@@ -21,15 +21,18 @@ $color-secondary-2-4: #542911;
   1. MAIN SETUP
 \*----------------------------*/
 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 $primary-color: #314359;
-$secondary-color1: #886A46;
-$secondary-color2: #885E46;
+$secondary-color1: #726228;
+$secondary-color2: #724328;
 $border-color: #67788D;
 
 
 body {
   background: $primary-color;
   margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 .hide {
@@ -147,10 +150,18 @@ body {
 .piece-holder {
 
 }
+
 .x,
 .o {
   font-size: 4em;
+  line-height: 148px;
   text-align: center;
-  margin-top: 25%;
-  vertical-align: middle;
+}
+
+.x {
+  color: $secondary-color1;
+}
+
+.o {
+  color: $secondary-color2;
 }

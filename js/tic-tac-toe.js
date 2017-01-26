@@ -1,4 +1,8 @@
-
+var playerX = "X";
+var playerO = "O";
+var player = playerX;
+var count = 0;
+var board = [];
 
 // ask user if one or two player (for now two player will be only option)
 function launchGameTypeModal() {
@@ -24,19 +28,43 @@ function init() {
 
 }
 
-var xTurn = true;
-function launchTwoPlayerMode() {
+function switchPlayer() {
+  count++;
 
-  if (xTurn) {
-    $(".square").click(function() {
-      $(this).append("<div class='x'>X</div>");
-    });
+  if (player === playerX) {
+    player = playerO;
   } else {
-    $(".square").click(function() {
-      $(this).append("<div class='o'>O</div>");
-    });
+    player = playerX;
   }
-  xTurn = false;
+}
+
+function checkForWinner() {
+  if (board[0] === player && board[1] === player && board[2] === player) {
+    alert(player + " wins!");
+  }
+  if (count >= 8) {
+    alert("It's a draw");
+  }
+}
+
+function updateBoard(squareId) {
+  board[squareId] = player;
+  console.log(board);
+}
+
+function takeTurn(cell) {
+  cell.addClass(player.toLocaleLowerCase());
+  cell.text(player);
+  checkForWinner();
+  switchPlayer();
+}
+
+function launchTwoPlayerMode() {
+  $(".square").unbind("click").click(function(element) {
+    updateBoard(element.target.id);
+    takeTurn($(this));
+    $(this).off("click");
+  });
 }
 
 
