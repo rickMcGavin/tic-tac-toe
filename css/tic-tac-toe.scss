@@ -48,8 +48,9 @@ body {
 \*----------------------------*/
 
 #onePlayer-twoPlayer,
-#choose-piece {
-  background-color: rgba(255,255,255, 0.3);
+#choose-piece,
+#winner {
+  background-color: rgba(255,255,255, 0.6);
   display: none;
   padding: 25% 0;
   position: fixed;
@@ -57,13 +58,8 @@ body {
   z-index: 1;
   height: 100%;
   width: 100%;
+  transition: 0.5s;
 }
-
-#onePlayer-twoPlayer h1,
-#choose-piece h1 {
-
-}
-
 
 
 

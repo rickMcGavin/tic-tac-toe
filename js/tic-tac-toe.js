@@ -7,9 +7,10 @@ var board = [];
 // ask user if one or two player (for now two player will be only option)
 function launchGameTypeModal() {
   $("#onePlayer-twoPlayer").show();
-  $("button").click(function() {
+  $("#two-player").click(function() {
     $("#onePlayer-twoPlayer").hide();
-    launchGamePieceModal();
+    alert("X always goes first");
+    launchTwoPlayerMode();
   });
 
 }
@@ -20,7 +21,6 @@ function launchGamePieceModal() {
   $("button").click(function() {
     $("#choose-piece").hide();
   });
-  launchTwoPlayerMode();
 }
 
 function init() {
@@ -39,9 +39,19 @@ function switchPlayer() {
 }
 
 function checkForWinner() {
-  if (board[0] === player && board[1] === player && board[2] === player) {
-    alert(player + " wins!");
+  if (
+  (board[0] === player && board[1] === player && board[2] === player)     || (board[3] === player && board[4] === player && board[5] === player)     ||  (board[6] === player && board[7] === player && board[8] === player)     ||
+  (board[0] === player && board[3] === player && board[6] === player)     ||
+  (board[1] === player && board[4] === player && board[7] === player)     ||
+  (board[2] === player && board[5] === player && board[8] === player)     ||
+  (board[0] === player && board[4] === player && board[8] === player)     ||
+  (board[2] === player && board[4] === player && board[6] === player)
+  ) {
+    $("#winner").append("<h1>" + player + " wins!</h1>");
+    $("#winner").show();
   }
+
+  if (board)
   if (count >= 8) {
     alert("It's a draw");
   }
