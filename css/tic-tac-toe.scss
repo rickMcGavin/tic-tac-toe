@@ -24,15 +24,20 @@ $color-secondary-2-4: #542911;
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 $primary-color: #314359;
-$secondary-color1: #726228;
-$secondary-color2: #724328;
+$secondary-color1: #AF9F66;
+$secondary-color2: #AF8166;
 $border-color: #67788D;
+$primary-text-color: #544511;
 
 
 body {
   background: $primary-color;
   margin: 0;
   font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  color: $primary-text-color;
 }
 
 .hide {
@@ -49,23 +54,22 @@ body {
 
 #onePlayer-twoPlayer,
 #choose-piece,
-#winner {
-  background-color: rgba(255,255,255, 0.6);
+#message {
+  background-color: rgba(255,255,255, 0.4);
   display: none;
   padding: 25% 0;
   position: fixed;
   text-align: center;
+  transition: 0.5s;
   z-index: 1;
   height: 100%;
   width: 100%;
-  transition: 0.5s;
 }
-
-
 
 /*----------------------------*\
   4. BOARD
 \*----------------------------*/
+
 .game {
   margin: 0 auto;
   height: 450px;
@@ -87,52 +91,46 @@ body {
   margin: 0;
 }
 
-  .top-left {
+  // bottom borders
+  .top-left,
+  .top-center,
+  .top-right,
+  .mid-left,
+  .mid-right    {
     border-bottom: 2px solid $border-color;
+  }
+
+  // right borders
+  .top-left,
+  .top-center,
+  .mid-left,
+  .bottom-left,
+  .bottom-center {
     border-right: 2px solid $border-color;
   }
 
-  .top-center {
-    border-bottom: 2px solid $border-color;
+  // left borders
+
+  .top-center,
+  .top-right,
+  .mid-right,
+  .bottom-center,
+  .bottom-right {
     border-left: 2px solid $border-color;
-    border-right: 2px solid $border-color;
   }
 
-  .top-right {
-    border-bottom: 2px solid $border-color;
-    border-left: 2px solid $border-color;
-  }
+  // top borders
 
-  .mid-left {
-    border-bottom: 2px solid $border-color;
-    border-right: 2px solid $border-color;
+  .mid-right,
+  .mid-left,
+  .bottom-left,
+  .bottom-center,
+  .bottom-right {
     border-top: 2px solid $border-color;
   }
 
   .mid-center {
     border: 2px solid $border-color;
-  }
-
-  .mid-right {
-    border-top: 2px solid $border-color;
-    border-left: 2px solid $border-color;
-    border-bottom: 2px solid $border-color;
-  }
-
-  .bottom-left {
-    border-top: 2px solid $border-color;
-    border-right: 2px solid $border-color;
-  }
-
-  .bottom-center {
-    border-top: 2px solid $border-color;
-    border-left: 2px solid $border-color;
-    border-right: 2px solid $border-color;
-  }
-
-  .bottom-right {
-    border-top: 2px solid $border-color;
-    border-left: 2px solid $border-color;
   }
 
 
@@ -142,10 +140,6 @@ body {
 /*----------------------------*\
   5. PIECES
 \*----------------------------*/
-
-.piece-holder {
-
-}
 
 .x,
 .o {
