@@ -1,0 +1,42 @@
+@media only screen and (max-width: 850px) {
+  #onePlayer-twoPlayer,
+  #choose-piece,
+  #message {
+    padding: 30% 0;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  #onePlayer-twoPlayer,
+  #choose-piece,
+  #message {
+    padding: 35% 0;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+
+  button {
+    padding: 10px 30px;
+  }
+
+  button:hover {
+    padding: 12px 32px;
+  }
+
+  #onePlayer-twoPlayer,
+  #choose-piece,
+  #message {
+    padding: 30% 0;
+  }
+
+  .game {
+    height: 300px;
+    width: 300px;
+  }
+
+  .x,
+  .o  {
+    line-height: 100px;
+  }
+}

@@ -3,8 +3,6 @@ var random = 0;
 var playerX = "X";
 var playerO = "O";
 var player = playerX;
-var playerChoice;
-var gameOver = false;
 
 
 // ask user if one or two player (for now two player will be only option)
@@ -31,86 +29,67 @@ function launchGamePieceModal() {
   $("#choose-piece").show();
   $("#button-x").click(function() {
     $("#choose-piece").hide();
-    playerChoice = "x";
     launchXPlayerMode();
   });
   $("#button-o").click(function() {
     $("#choose-piece").hide();
-    playerChoice = "o";
     launchOPlayerMode();
   });
 }
 
-function launchTwoPlayerMode() {
-  $(".square").unbind("click").click(function(element) {
-    takeTurn($(this));
-  });
-}
-
-
 function launchXPlayerMode() {
-  random = getRandomNumber();
+  (function getRandomNumber() {
+    random = Math.floor(Math.random() * 9);
+    if ($("#"+random).text() === "X" || $("#"+random).text() === "O") {
+      getRandomNumber();
+    } else {
+      return random;
+    }
+  })();
   if (count % 2 === 0) {
-    if (!gameOver) {
     $(".square").unbind("click").click(function(element) {
       takeTurn($(this));
+      $(this).off("click");
       launchXPlayerMode();
     });
-  }
   } else {
-    if (!gameOver) {
-      takeTurn($("#"+random));
-      launchXPlayerMode();
-    }
+    takeTurn($("#"+random));
+    $("#"+random).off("click");
+    launchXPlayerMode();
   }
 }
 
 function launchOPlayerMode() {
-  random = getRandomNumber();
+  (function getRandomNumber() {
+    random = Math.floor(Math.random() * 9);
+    if ($("#"+random).text() === "X" || $("#"+random).text() === "O") {
+      getRandomNumber();
+    } else {
+      return random;
+    }
+  })();
   if (count % 2 !== 0) {
-    if (!gameOver) {
-      $(".square").unbind("click").click(function(element) {
-        takeTurn($(this));
-        launchOPlayerMode();
-      });
-    }
-  } else {
-    if (!gameOver) {
-      takeTurn($("#"+random));
+    $(".square").unbind("click").click(function(element) {
+      takeTurn($(this));
+      $(this).off("click");
       launchOPlayerMode();
-    }
-  }
-}
-
-function getRandomNumber() {
-  random = Math.floor(Math.random() * 9);
-  if ($("#"+random).hasClass("x") && $("#"+random).hasClass("o")) {
-    getRandomNumber();
+    });
   } else {
-    return random;
-  }
-}
-
-function takeTurn(cell) {
-  if ((!cell.hasClass("o")) && (!cell.hasClass("x"))) {
-    cell.addClass(player.toLowerCase());
-    cell.text(player);
-    checkForWinner();
-    switchPlayer();
-  }
-}
-
-function switchPlayer() {
-  count++;
-  if (player === playerX) {
-    player = playerO;
-  } else {
-    player = playerX;
+    takeTurn($("#"+random));
+    $("#"+random).off("click");
+    launchOPlayerMode();
   }
 }
 
 
-
+function reset() {
+  $(".square").empty();
+  $("#message").empty();
+  $("#message").hide();
+  player = playerX;
+  count = 0;
+  $(".square").removeClass("x o");
+}
 
 function checkForWinner() {
   if (
@@ -147,34 +126,40 @@ function checkForWinner() {
    ($("#6").text() === player)) {
       $("#message").append("<h1>" + player + " wins!</h1>");
       $("#message").show();
-      gameOver = true;
       setTimeout(function() {
         reset();
       }, 2000);
   } else if (count >= 8) {
       $("#message").append("<h1>It's a draw</h1>");
       $("#message").show();
-      gameOver = true;
       setTimeout(function() {
         reset();
       }, 2000);
   }
 }
 
-function reset() {
-  gameOver = false;
-  $(".square").empty();
-  $("#message").empty();
-  $("#message").hide();
-  $(".square").removeClass("x o");
-  count = 0;
-  if (playerChoice === "o") {
-    player = playerX;
-    launchOPlayerMode();
+function launchTwoPlayerMode() {
+  $(".square").unbind("click").click(function(element) {
+    takeTurn($(this));
+    console.log($(this).text());
+    $(this).off("click");
+  });
+}
+
+function switchPlayer() {
+  count++;
+  if (player === playerX) {
+    player = playerO;
   } else {
     player = playerX;
   }
+}
 
+function takeTurn(cell) {
+  cell.addClass(player.toLowerCase());
+  cell.text(player);
+  checkForWinner();
+  switchPlayer();
 }
 
 launchGameTypeModal();
